@@ -5,34 +5,43 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class presentation extends Fragment {
+import com.example.travels.databinding.HomeBinding;
 
-    private Button btnVerVuelos;
+
+public class FragmentHome extends Fragment {
+    private Button btnStar;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.presentacion, container, false);
+        return inflater.inflate(R.layout.home, container, false);
+
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        btnVerVuelos = view.findViewById(R.id.btnVerVuelos);
+        btnStar = view.findViewById(R.id.btnStarted);
 
-        btnVerVuelos.setOnClickListener(new View.OnClickListener() {
+        btnStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.verVuelos2);
+                Navigation.findNavController(view).navigate(R.id.presentation2);
             }
         });
+
     }
+
 }

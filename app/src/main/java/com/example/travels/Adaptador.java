@@ -1,9 +1,11 @@
 package com.example.travels;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,45 +21,31 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.MyViewHolder> {
     Context context;
     ArrayList<Paises> paisesArrayList;
 
-    public Adaptador(Context context, ArrayList<Paises> paisesArrayList){
+    public Adaptador(Context context, ArrayList<Paises> paisesArrayList) {
         this.context = context;
         this.paisesArrayList = paisesArrayList;
 
-
     }
-
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(context).inflate(R.layout.lista_paises,parent,false);
+        View v = LayoutInflater.from(context).inflate(R.layout.tarjeta, parent, false);
 
         return new MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull Adaptador.MyViewHolder holder, int position) {
 
-        Paises  paises = paisesArrayList.get(position);
-
+        String txtPais = paisesArrayList.get(position).nombre;
+        String txtPrecio = paisesArrayList.get(position).precio;
+        int paisImagen = paisesArrayList.get(position).imagen;
         // Verificar si el objeto Paises y sus campos no son nulos antes de acceder a ellos
-        if (paises != null) {
-            if (paises.nombre != null) {
-                holder.textoPais.setText(paises.nombre);
-            }
-            if (paises.precio != null) {
-                holder.textoPrecio.setText(paises.precio);
-            }
-            if (paises.imagen != 0) {
-                holder.imagenPais.setImageResource(paises.imagen);
-            }
-        }
-
-        holder.textoPais.setText(paises.nombre);
-        holder.textoPrecio.setText(paises.precio);
-        holder.imagenPais.setImageResource(paises.imagen);
-
+        holder.textoPais.setText(txtPais);
+        holder.textoPrecio.setText(txtPrecio);
+        holder.imagenPais.setImageResource(paisImagen);
 
     }
 
@@ -66,20 +54,19 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.MyViewHolder> {
         return paisesArrayList.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+public static class MyViewHolder extends RecyclerView.ViewHolder {
 
+    ImageView imagenPais;
+    TextView textoPais;
+    TextView textoPrecio;
 
-        ShapeableImageView imagenPais;
-        TextView textoPais;
-        TextView textoPrecio;
-
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-            textoPais = itemView.findViewById(R.id.textoPais);
-            textoPrecio = itemView.findViewById(R.id.textoPrecio);
-            imagenPais = itemView.findViewById(R.id.imagenPais);
-        }
+    public MyViewHolder(@NonNull View itemView) {
+        super(itemView);
+        textoPais = itemView.findViewById(R.id.textoPais);
+        textoPrecio = itemView.findViewById(R.id.textoPrecio);
+        imagenPais = itemView.findViewById(R.id.imagenPais);
     }
+}
 
 
 }

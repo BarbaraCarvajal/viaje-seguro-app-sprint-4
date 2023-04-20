@@ -1,5 +1,7 @@
 package com.example.travels;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,58 +16,13 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link verVuelos#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class verVuelos extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
     private ArrayList<Paises> paisesArrayList;
     private String[] paisesNombres;
     private String[] paisesPrecios;
 
     private int[] imagenPaises;
     private RecyclerView recyclerView;
-
-    public verVuelos() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment verVuelos.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static verVuelos newInstance(String param1, String param2) {
-        verVuelos fragment = new verVuelos();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -78,7 +35,18 @@ public class verVuelos extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        dataInitialize();
+        //dataInitialize();
+
+        paisesArrayList = new ArrayList<>();
+
+        paisesArrayList.add(new Paises(getString(R.string.destino_1),getString(R.string.precio_2), R.drawable.japon));
+        paisesArrayList.add(new Paises(getString(R.string.destino_2),getString(R.string.precio_2), R.drawable.japon2));
+        paisesArrayList.add(new Paises(getString(R.string.destino_3),getString(R.string.precio_3), R.drawable.japon));
+        paisesArrayList.add(new Paises(getString(R.string.destino_4),getString(R.string.precio_4), R.drawable.japon2));
+        paisesArrayList.add(new Paises(getString(R.string.destino_5),getString(R.string.precio_5), R.drawable.japon));
+
+
+
         recyclerView = view.findViewById(R.id.rv1);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
@@ -87,41 +55,4 @@ public class verVuelos extends Fragment {
         adaptador.notifyDataSetChanged();
     }
 
-    private void dataInitialize() {
-        paisesArrayList = new ArrayList<>();
-
-        paisesNombres = new String[]{
-                getString(R.string.destino_1),
-                getString(R.string.destino_2),
-                getString(R.string.destino_3),
-                getString(R.string.destino_4),
-                getString(R.string.destino_5),
-        };
-
-        paisesPrecios = new String[]{
-                getString(R.string.precio_1),
-                getString(R.string.precio_2),
-                getString(R.string.precio_3),
-                getString(R.string.precio_4),
-                getString(R.string.precio_5),
-
-        };
-
-
-        imagenPaises = new int[]{
-                R.drawable.japon2,
-                R.drawable.japon,
-                R.drawable.japon2,
-                R.drawable.japon,
-                R.drawable.japon2
-        };
-
-
-
-        for (int i = 0; i< paisesNombres.length; i++){
-            Paises paises = new Paises(paisesNombres[i], paisesPrecios[i], imagenPaises[i]);
-            paisesArrayList.add(paises);
-        }
-
-    }
 }

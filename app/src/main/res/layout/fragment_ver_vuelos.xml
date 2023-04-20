@@ -5,13 +5,13 @@
     android:id="@+id/rva"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/azul_marino"
     android:elevation="4dp"
     app:cardCornerRadius="20dp"
     app:cardUseCompatPadding="true">
 
 
     <androidx.recyclerview.widget.RecyclerView
-
         android:id="@+id/rv1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

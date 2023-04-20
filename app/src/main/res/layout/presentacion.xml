@@ -15,7 +15,7 @@
         android:src="@drawable/airplane1" />
 
     <Button
-        android:id="@+id/btn_verVuelos"
+        android:id="@+id/btnVerVuelos"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -45,6 +45,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_verVuelos"
+        app:layout_constraintTop_toBottomOf="@+id/btnVerVuelos"
         app:layout_constraintVertical_bias="0.16" />
 </androidx.constraintlayout.widget.ConstraintLayout>

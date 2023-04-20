@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home2">
+
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.example.travels.FragmentHome"
+        android:label="Home" >
+        <action
+            android:id="@+id/action_home2_to_presentation2"
+            app:destination="@id/presentation2" />
+    </fragment>
+    <fragment
+        android:id="@+id/presentation2"
+        android:name="com.example.travels.presentation"
+        android:label="presentacion"
+        tools:layout="@layout/presentacion" >
+        <action
+            android:id="@+id/action_presentation2_to_verVuelos2"
+            app:destination="@id/verVuelos2" />
+    </fragment>
+    <fragment
+        android:id="@+id/verVuelos2"
+        android:name="com.example.travels.verVuelos"
+        android:label="verVuelos" />
+</navigation>
